@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.java.j2seproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+            <name>POO</name>
+            <source-roots>
+                <root id="src.java.dir" name="ProjetoLoja.java"/>
+                <root id="src.annotations.dir" name="ProjetoLoja.annotations"/>
+                <root id="src.java2.dir" name="ProjetoLoja.java"/>
+                <root id="src.annotations2.dir" name="ProjetoLoja.annotations"/>
+                <root id="src.java51.dir" name="ProjetoLoja.java"/>
+                <root id="src.annotations51.dir" name="ProjetoLoja.annotations"/>
+            </source-roots>
+            <test-roots>
+                <root id="test.java.dir" name="ProjetoLoja.java"/>
+                <root id="test.java2.dir" name="ProjetoLoja.java"/>
+                <root id="test.java51.dir" name="ProjetoLoja.java"/>
+            </test-roots>
+        </data>
+        <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
+            <definitions>.\lib\nblibraries.properties</definitions>
+        </libraries>
+    </configuration>
+</project>
