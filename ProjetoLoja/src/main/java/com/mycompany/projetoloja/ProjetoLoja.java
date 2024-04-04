@@ -91,3 +91,6 @@ public class ProjetoLoja {
     }
 }
 //projeto em repositorio no github
+
+
+//faltando corrigir a parte de consulta de clientes e produtos, não ta aparecendo
