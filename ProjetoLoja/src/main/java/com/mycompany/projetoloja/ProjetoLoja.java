@@ -23,30 +23,82 @@ public class ProjetoLoja {
 
             switch (opcao) {
                 case 1:
+                    //cadastro de produtos
                     System.out.println("Cadastro de produto");
-                    // Código para cadastrar produto
+                    Produto novoProduto = new Produto();
+
+                    System.out.println("Insira o ID do produto:");
+                    int idProduto = ler.nextInt();
+                    novoProduto.setId(idProduto);
+
+                    System.out.println("Insira o Nome do produto:");
+                    String nomeProduto = ler.next();
+                    novoProduto.setNome(nomeProduto);
+
+                    System.out.println("Insira o Preco do produto:");
+                    double precoProduto = ler.nextDouble();
+                    novoProduto.setPreco(precoProduto);
+
+                    System.out.println("Insira a Descricao do produto:");
+                    String descricaoProduto = ler.next();
+                    novoProduto.setDescricao(descricaoProduto);
+
+                    //comando que estava em falta
+                    loja.adicionarProduto(novoProduto);
                     break;
 
                 case 2:
+                    //mostrar produtos
                     System.out.println("Consulta de Produtos:");
                     List<Produto> produtos = loja.listarProdutos();
-                    for (Produto produto : produtos) {
-                        System.out.println(produto.getNome() + " - R$" + produto.getPreco());
+                    if (produtos.isEmpty()) {
+                        System.out.println("Nenhum produto cadastrado.");
+                    } else {
+                        for (Produto produto : produtos) {
+                            System.out.println("ID: "+ produto.getId() +" Nome: " + produto.getNome() + " Preco: R$" + produto.getPreco());
+                        }
                     }
                     break;
 
                 case 3:
+                    //cadastro de clientes
                     System.out.println("Cadastro de clientes");
-                    // Código para cadastrar cliente
+                    Cliente novoCliente = new Cliente();
+
+                    System.out.println("Insira o ID do cliente:");
+                    int idCliente = ler.nextInt();
+                    novoCliente.setId(idCliente);
+
+                    System.out.println("Insira o Nome do cliente:");
+                    String nomeCliente = ler.next();
+                    novoCliente.setNome(nomeCliente);
+
+                    System.out.println("Insira o Email do cliente:");
+                    String emailCliente = ler.next();
+                    novoCliente.setEmail(emailCliente);
+
+                    System.out.println("Insira o Endereco do cliente:");
+                    String enderecoCliente = ler.next();
+                    novoCliente.setEndereco(enderecoCliente);
+
+
+                    /*assim como no case 1, falatava adicionar de fato um novo cliente
+                    na lista*/
+                    loja.adicionarCliente(novoCliente);
                     break;
 
                 case 4:
                     System.out.println("Consulta de Clientes:");
-                    List<Cliente> clientes = loja.listarClientes();
-                    for (Cliente cliente : clientes) {
-                        System.out.println(cliente.getNome() + " - " + cliente.getEmail());
+                    List<Cliente> cli = loja.listarClientes();
+                    if (cli.isEmpty()) {
+                        System.out.println("Nenhum usuário cadastrado.");
+                    } else {
+                        for (Cliente cliente : cli) {
+                            System.out.println("Id: "+ cliente.getId() +"Nome: " + cliente.getNome() + " Email: " + cliente.getEmail());
+                        }
                     }
                     break;
+
             }
         } while (opcao != 0);
     }
@@ -54,4 +106,4 @@ public class ProjetoLoja {
 
 //projeto em repositorio no github
 
-//Corrigido erros de swicth case e na listagem dos itens
+//Corrigido erros de swicthcase e na listagem dos itens

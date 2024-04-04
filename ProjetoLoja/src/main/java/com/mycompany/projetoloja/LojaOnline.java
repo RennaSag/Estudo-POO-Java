@@ -9,14 +9,14 @@ public class LojaOnline {
     private List<Produto> listaProdutos;
     private List<Cliente> listaClientes;
     private List<Pedido> listaPedidos;
-    
-    
-    //iniciar as listas vazias 
+
+
+    //iniciar as listas vazias
     public LojaOnline(){
         listaProdutos = new ArrayList<>();
         listaClientes = new ArrayList<>(0);
     }
-    
+
     
 
     public void adicionarProduto(Produto produto){
@@ -71,6 +71,4 @@ public class LojaOnline {
         listaPedidos.add(pedido);
         return pedido;
     }
-    
-    
 }
