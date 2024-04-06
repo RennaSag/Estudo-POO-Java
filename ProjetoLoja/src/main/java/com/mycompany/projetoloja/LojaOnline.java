@@ -17,7 +17,6 @@ public class LojaOnline {
         listaClientes = new ArrayList<>(0);
     }
 
-    
 
     public void adicionarProduto(Produto produto){
         listaProdutos.add(produto);
@@ -68,6 +67,8 @@ public class LojaOnline {
 
     public Pedido realizarPedido(Cliente cliente, List<Produto> produtos) {
         Pedido pedido = new Pedido();
+        pedido.setCliente(cliente);//setar cliente e produtos ao pedidos
+        pedido.setProdutos(produtos);//paramentro cliente e parametro produtos (list)
         listaPedidos.add(pedido);
         return pedido;
     }

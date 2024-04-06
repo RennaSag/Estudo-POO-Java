@@ -1,5 +1,6 @@
 package com.mycompany.projetoloja;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -9,15 +10,21 @@ public class ProjetoLoja {
 
     static Scanner ler = new Scanner(System.in);
 
+
+
     public static void main(String[] args) {
         int opcao;
         LojaOnline loja = new LojaOnline();
+        List<Cliente> cli = loja.listarClientes();
+        List<Produto> produtos = loja.listarProdutos();
+        List<Produto> produtosPedido = new ArrayList<>();
 
         do {
             System.out.println("1 - Cadastrar Produto");
             System.out.println("2 - Consultar Produtos");
             System.out.println("3 - Cadastrar Cliente");
             System.out.println("4 - Consultar Clientes");
+            System.out.println("5 - Realizar Pedido:");
             System.out.println("0 - Sair");
             opcao = ler.nextInt();
 
@@ -50,7 +57,6 @@ public class ProjetoLoja {
                 case 2:
                     //mostrar produtos
                     System.out.println("Consulta de Produtos:");
-                    List<Produto> produtos = loja.listarProdutos();
                     if (produtos.isEmpty()) {
                         System.out.println("Nenhum produto cadastrado.");
                     } else {
@@ -89,15 +95,88 @@ public class ProjetoLoja {
 
                 case 4:
                     System.out.println("Consulta de Clientes:");
-                    List<Cliente> cli = loja.listarClientes();
                     if (cli.isEmpty()) {
                         System.out.println("Nenhum usuário cadastrado.");
                     } else {
                         for (Cliente cliente : cli) {
-                            System.out.println("Id: "+ cliente.getId() +"Nome: " + cliente.getNome() + " Email: " + cliente.getEmail());
+                            System.out.println("ID: "+ cliente.getId() +" Nome: " + cliente.getNome() + " Email: " + cliente.getEmail());
                         }
                     }
                     break;
+
+                case 5:
+                    //realizar pedido
+                    System.out.println("Realizar Pedido:");
+                    Pedido novoPedido = new Pedido();
+
+                    System.out.println("Insira o ID do pedido: ");
+                    int idPedido = ler.nextInt();
+                    novoPedido.setId(idPedido);
+
+                    if (cli.isEmpty()) {
+                        System.out.println("Nenhum usuário cadastrado.");
+                        break;
+                    } else {
+                        //mostrar ao usuario a lista dos clientes disponiveis para escolher qual vai fazer o pedido
+                        for (Cliente cliente : cli) {
+                            System.out.println("Clientes disponiveis: ");
+                            System.out.println("Id: " + cliente.getId() + " Nome: " + cliente.getNome());
+                        }
+                    }
+
+                    System.out.println("Insira o ID do cliente:");
+                    int idClientePedido = ler.nextInt();
+                    Cliente clientePedido = null;
+                    for (Cliente cliente : cli) {
+                        if (cliente.getId() == idClientePedido) {
+                            clientePedido = cliente;
+                            break;
+                        }
+                    }
+                    if (clientePedido == null) {
+                        System.out.println("Cliente não encontrado.");
+                        break;
+                    }
+                    novoPedido.setCliente(clientePedido);
+
+                    System.out.println("Produtos disponiveis: ");
+                    if (produtos.isEmpty()) {
+                        System.out.println("Nenhum produto cadastrado.");
+                        break;
+                    } else {
+                        for (Produto produto : produtos) {
+                            System.out.println("ID: " + produto.getId() + " Nome: " + produto.getNome());
+                        }
+                    }
+
+
+                    int opcionador;
+                    do {
+                        System.out.println("Insira o ID do produto: ");
+                        int idProdutoPedido = ler.nextInt();
+                        Produto produtoPedido = null;
+                        for (Produto produto : produtos) {
+                            if (produto.getId() == idProdutoPedido) {
+                                produtoPedido = produto;
+                                break;
+                            }
+                        }
+                        if (produtoPedido == null) {
+                            System.out.println("Produto não encontrado.");
+                            break;
+                        }
+                        produtosPedido.add(produtoPedido);
+
+                        System.out.println("Deseja adicionar mais produtos? (1:Sim/2:Nao)");
+                        opcionador = ler.nextInt();
+                    } while (opcionador != 2);
+
+                    novoPedido.setProdutos(produtosPedido);
+
+                    //finalizar e adicionar o pedido
+                    loja.realizarPedido(clientePedido, produtosPedido);
+                    break;
+
 
             }
         } while (opcao != 0);
@@ -106,4 +185,4 @@ public class ProjetoLoja {
 
 //projeto em repositorio no github
 
-//Corrigido erros de swicthcase e na listagem dos itens
+//adicionado o case 5 para realizar pedidos
