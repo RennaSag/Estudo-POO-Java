@@ -44,6 +44,15 @@ public class LojaOnline {
         }return null;
     }
 
+    //buscar Produto por Id
+    public  Produto buscarProdutoPorId(int id){
+        for(Produto produto : listaProdutos){
+            if (produto.getId() == id) {
+                return produto;
+            }
+        }return null;
+    }
+
 
 
     public List<Produto> listarProdutos(){
@@ -62,7 +71,16 @@ public class LojaOnline {
             }
         }return null;
     }
-    
+
+
+    //buscar cliente por id
+    public Cliente buscarClientePorId(int id){
+        for(Cliente cliente : listaClientes){
+            if(cliente.getId() == id){
+                return cliente;
+            }
+        }return null;
+    }
     
 
     public Pedido realizarPedido(Cliente cliente, List<Produto> produtos) {
