@@ -14,7 +14,8 @@ public class LojaOnline {
     //iniciar as listas vazias
     public LojaOnline(){
         listaProdutos = new ArrayList<>();
-        listaClientes = new ArrayList<>(0);
+        listaClientes = new ArrayList<>();
+        listaPedidos = new ArrayList<>();
     }
 
 
@@ -42,9 +43,8 @@ public class LojaOnline {
             }
         }return null;
     }
-    
-    
-    
+
+
 
     public List<Produto> listarProdutos(){
         return listaProdutos;
