@@ -174,6 +174,9 @@ public class ProjetoLoja {
 
 
                 case 6:
+                    //public void removerProduto(Produto produto){
+                    //        listaProdutos.remove(produto);
+                    //    }
                     System.out.println("Remover produto:");
 
                     System.out.println("Produtos disponiveis: ");
@@ -188,16 +191,17 @@ public class ProjetoLoja {
 
 
                     int opcionador2;
+                    int idProdutoRemover;
                     do {
                         System.out.println("Insira o ID do produto: ");
-                        loja.removerProduto(loja.buscarProdutoPorId(ler.nextInt()));
+                        idProdutoRemover = ler.nextInt();
 
-
-                        if (loja.buscarProdutoPorId(ler.nextInt()) == null) {
+                        if (loja.buscarProdutoPorId(idProdutoRemover) == null) {
                             System.out.println("Produto não encontrado.");
                             break;
                         }
                         else {
+                            loja.removerProduto(loja.buscarProdutoPorId(idProdutoRemover));
                             System.out.println("Produto removido com sucesso");
                         }
 
@@ -210,6 +214,11 @@ public class ProjetoLoja {
 
 
                 case 7:
+                    /*
+                    public void removerCliente(Cliente cliente){
+                        listaClientes.remove(cliente);
+                    }
+                     */
                     System.out.println("Remover cliente");
 
                     if (loja.listarClientes().isEmpty()) {
@@ -224,14 +233,16 @@ public class ProjetoLoja {
 
 
                     int opcionador3;
+                    int idClienteRemover;
                     do {
-                        System.out.println("Insira o id do cliente que deseja remover: ");
-                        loja.removerCliente(loja.buscarClientePorId(ler.nextInt()));
-                        if(loja.buscarClientePorId(ler.nextInt()) == null){
+                        System.out.println("Insira o ID do cliente que deseja remover: ");
+                        idClienteRemover = ler.nextInt();
+                        if(loja.buscarClientePorId(idClienteRemover) == null){
                             System.out.println("Cliente não encontrado.");
                             break;
                         }
                         else {
+                            loja.removerCliente(loja.buscarClientePorId(idClienteRemover));
                             System.out.println("Cliente removido com sucesso");
                         }
 
